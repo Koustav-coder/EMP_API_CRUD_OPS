@@ -8,8 +8,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import com.educon.model.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
-
-	Employee findByEmpcity(String emp_city);
+         // for unique emp city
+	//Employee findByEmpcity(String emp_city);
+	// for not unique city
+	Optional<List<Employee>> findByEmpcity(String emp_city);
 
 	Optional<List<Employee>> findByEmpageGreaterThan(int emp_age);
 
