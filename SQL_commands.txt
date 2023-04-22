@@ -1,0 +1,19 @@
+MYSQL DB Create:
+==================================
+CREATE database IF NOT EXISTS EmployeeeDB;
+use EmployeeeDB;
+==================================
+Table Create:
+------------
+CREATE TABLE Employee(
+emp_id bigint NOT NULL auto_increment,
+emp_name varchar(50) default NULL,
+emp_salary float default NULL,
+emp_age integer default NULL,
+emp_city varchar(50) default NULL,
+primary key (emp_id));
+===================
+select * from employee;
+==================
+
+
