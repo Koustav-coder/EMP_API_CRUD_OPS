@@ -77,11 +77,17 @@ public class EmployeeController {
 		employeeRepository.deleteAll();
 		return "Employee deleted Successfully..";
 	}
-
-	@GetMapping("/employees/empcity")
-	public ResponseEntity<Employee> getEmployeeByempcity(@RequestParam("emp_city") String emp_city) {
-		Employee emp = employeeRepository.findByEmpcity(emp_city);
-		return new ResponseEntity<Employee>(emp, HttpStatus.FOUND);
+        // if empcity is unique then only the following will work
+// 	@GetMapping("/employees/empcity")
+// 	public ResponseEntity<Employee> getEmployeeByempcity(@RequestParam("emp_city") String emp_city) {
+// 		Employee emp = employeeRepository.findByEmpcity(emp_city);   //if city unique it will work
+// 		return new ResponseEntity<Employee>(emp, HttpStatus.FOUND);
+// 	}
+	// if empcity is not unique 
+        @GetMapping("/employees/empcity")
+	public ResponseEntity<List<Employee>> getEmployeeByempcity(@RequestParam("emp_city") String emp_city) {
+		Optional<List<Employee>> empList = employeeRepository.findByEmpcity(emp_city);
+		return new ResponseEntity<List<Employee>>(empList.get(), HttpStatus.FOUND);
 	}
 	
 	@GetMapping("/employee/employeeGreaterThan")
