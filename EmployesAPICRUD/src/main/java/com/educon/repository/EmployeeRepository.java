@@ -12,7 +12,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 	//Employee findByEmpcity(String emp_city);
 	// for not unique city
 	Optional<List<Employee>> findByEmpcity(String emp_city);
-
 	Optional<List<Employee>> findByEmpageGreaterThan(int emp_age);
+	Optional<List<Employee>> findByEmpnameLike(String emp_name);
 
 }
