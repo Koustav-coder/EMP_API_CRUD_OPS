@@ -95,4 +95,9 @@ public class EmployeeController {
 		Optional<List<Employee>> empList = employeeRepository.findByEmpageGreaterThan(emp_age);
 		return new ResponseEntity<List<Employee>>(empList.get(), HttpStatus.FOUND);
 	}
+	@GetMapping("/employee/empnamelike")
+	public ResponseEntity<List<Employee>> getEmployeeNameLike(@RequestParam("emp_name") String emp_name) {
+		Optional<List<Employee>> empList = employeeRepository.findByEmpnameLike("%" + emp_name + "%");
+		return new ResponseEntity<List<Employee>>(empList.get(), HttpStatus.FOUND);
+	}
 }
